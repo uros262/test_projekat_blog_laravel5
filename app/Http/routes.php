@@ -27,9 +27,9 @@ Route::post('komentar/{id}', 'KontrolerKomentara@store');
 
 
 Route::post('plus', 'KontrolerKomentara@plus');
-Route::get('plus', 'KontrolerKomentara@plus');
+//Route::get('plus', 'KontrolerKomentara@plus');
 Route::post('minus', 'KontrolerKomentara@minus');
-Route::get('minus', 'KontrolerKomentara@minus');
+//Route::get('minus', 'KontrolerKomentara@minus');
 
 //Route::controllers([
 //    'auth' => 'Auth\AuthController',

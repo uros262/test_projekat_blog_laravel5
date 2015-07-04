@@ -128,15 +128,17 @@ class KontrolerKomentara extends Controller
 
     public function plus(Request $request){
 
+        //dd('bidon');
+
         $id = $request->get('podatak');
         $komentar = Comment::find($id);
 
         $komentar->plus = $komentar->plus + 1;
         $plus = $komentar->plus;
-        $komentar->update($komentar->plus);
-        //DB::update('update comments set plus = ? where id = ?', [ '6', $id]);
+        //$komentar->update($komentar->plus);
+        DB::update('update comments set plus = ? where id = ?', [ $plus, $id]);
 
-        return View::make('clanak.plus', compact('plus'));
+        return view('clanak.plus', compact('plus'));
     }
 
     public function minus(Request $request){
@@ -146,9 +148,9 @@ class KontrolerKomentara extends Controller
 
         $komentar->minus = $komentar->minus + 1;
         $minus = $komentar->minus;
-        $komentar->update($komentar->minus);
-        //DB::update('update comments set plus = ? where id = ?', [ '6', $id]);
+       // $komentar->update($komentar->minus);
+        DB::update('update comments set minus = ? where id = ?', [ $minus, $id]);
 
-        return View::make('clanak.minus', compact('minus'));
+        return view('clanak.minus', compact('minus'));
     }
 }

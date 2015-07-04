@@ -1,0 +1,11 @@
+To: uros.gogic93@yahoo.com
+Subject: Your Password Reset Link
+Message-ID: <a07ba9f3da3d04cc7d01fec3c43b9ba7@localhost>
+Date: Sun, 05 Jul 2015 00:54:22 +0200
+From: 
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Click here to reset your password: http://localhost:8000/password/reset/1f3=
+627940e1914d491e56412e299bbfaa0dd8290b87668c5deef1f9c7a5fa2a2
