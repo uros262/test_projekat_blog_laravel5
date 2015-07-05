@@ -20,7 +20,7 @@ $a = stampa($komentari,$a);
 
 @foreach($a as $komentar)
     <?php $poravnaj = $komentar->level * 50;?>
-    <div style="margin-left: {{ $poravnaj }}px;background-color: gainsboro;border:1px solid darkgrey; margin-bottom: 10px;max-width: 600px; padding: 0px 10px 10px;">
+    <div id="kom_{{$komentar->id}}" style="margin-left: {{ $poravnaj }}px;background-color: gainsboro;border:1px solid darkgrey; margin-bottom: 10px;max-width: 600px; padding: 0px 10px 10px;">
         <h2>{{$komentar->name}}</h2>
         <p class="vrijeme">{{$komentar->created_at}}</p>
         <p class="sadrzaj">{{$komentar->body}}</p>
@@ -44,6 +44,6 @@ $a = stampa($komentari,$a);
         {!! Form::close() !!}
 
         <button class="odg" style="margin-left: 200px;">Odgovori</button>
-        @include('clanak._kom')
+        @include('clanak._kom',['clanak_id' => $clanak->id])
     </div>
 @endforeach

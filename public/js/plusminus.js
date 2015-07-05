@@ -1,7 +1,13 @@
 $(document).ready(function() {
 
-    $('input[value=Plus]').click(function(event){
+    $('input[value=Plus], input[value=Minus]').removeAttr('disabled');
+
+    $('input[value=Plus]').on('click',function(event){
+        $(this).attr('disabled','disabled');
+        $(this).parent().next().next().children('input[value=Minus]').attr('disabled','disabled');
+
         event.preventDefault();
+
         var id = $(this).prev().val();
         var token = $(this).prev().prev().val();
 
@@ -26,7 +32,11 @@ $(document).ready(function() {
     });
 
     $('input[value=Minus]').click(function(event){
+        $(this).attr('disabled','disabled');
+        $(this).parent().prev().prev().children('input[value=Plus]').attr('disabled','disabled');
+
         event.preventDefault();
+
         var id = $(this).prev().val();
         var token = $(this).prev().prev().val();
 

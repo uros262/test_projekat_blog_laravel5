@@ -20,6 +20,7 @@
 
     <div class="form-group">
         {!! Form::label('body','Komentar: ') !!}
+        <span style="float: right;">0/1500</span>
         {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
         {!! Form::hidden('parent_id','0') !!}
         {!! Form::hidden('level','-1') !!}
@@ -33,7 +34,8 @@
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Posalji komentar', ['class' => 'btn btn-primary form-control']) !!}
+        {!! Form::hidden('id', $clanak->id) !!}
+        {!! Form::submit('Prokomentarisi', ['class' => 'btn btn-primary form-control']) !!}
     </div>
     {!! Form::close() !!}
 

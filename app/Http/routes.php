@@ -23,7 +23,7 @@ Route::get('kontakt', 'KontrolerStrana@kontakt');
 Route::resource('clanak', 'KontrolerClanaka');
 
 Route::get('komentar/{id}', 'KontrolerKomentara@show');
-Route::post('komentar/{id}', 'KontrolerKomentara@store');
+Route::post('komentar', 'KontrolerKomentara@store');
 
 
 Route::post('plus', 'KontrolerKomentara@plus');

@@ -18,14 +18,7 @@ class PasswordController extends Controller
     |
     */
 
-    use ResetsPasswords; //mailtrap.io
-
-//MAIL_DRIVER=smtp
-//MAIL_HOST=mailtrap.io
-//MAIL_PORT=2525
-//MAIL_USERNAME=urosgggxxx@gmail.com
-//MAIL_PASSWORD=huanitabaloteli262
-//MAIL_ENCRYPTION=null
+    use ResetsPasswords;
 
     /**
      * Create a new password controller instance.

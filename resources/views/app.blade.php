@@ -18,6 +18,9 @@
     <!-- Scripts -->
     <script src="/js/jquery-1.11.0.js"></script>
     <script src="/js/plusminus.js"></script>
+    <script src="/js/validacija.js"></script>
+    <script src="/js/objavikomentar.js"></script>
+    <script src="/js/accordian.js"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -73,21 +76,5 @@
 <!-- Scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script>
-    var createAccordian = function(accordianElem) {
-        // TODO: Implement createAccordian.
-        $(accordianElem).click(function(){
-            $(this).next().slideToggle("fast");
-        });
-    };
-
-    $(document).ready(function() {
-        // TODO: Use createAccordian to made the FAQ page expandable and collapsible.
-
-        $(".kom").css("display","none");
-        createAccordian(".odg");
-    });
-
-</script>
 </body>
 </html>

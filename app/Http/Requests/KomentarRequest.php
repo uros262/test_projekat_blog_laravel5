@@ -25,7 +25,7 @@ class KomentarRequest extends Request
     {
         return [
             'name'=>'required',
-            'body' => 'required',
+            'body' => 'required|max:1500',
             'anti' => 'required'
         ];
     }

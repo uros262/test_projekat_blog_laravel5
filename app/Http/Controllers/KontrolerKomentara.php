@@ -11,6 +11,7 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -66,7 +67,8 @@ class KontrolerKomentara extends Controller
         return view('clanak.komentar', compact('clanak','komentari','sabirak1','sabirak2','rezultat'));
     }
 
-    public function store($id,KomentarRequest $request){
+
+    public function store(KomentarRequest $request){
 
         $anti = $request->get('anti');
         $s = 0;
@@ -108,20 +110,75 @@ class KontrolerKomentara extends Controller
         if($rez == $s)
         {
             $komentar = new Comment();
-            $komentar->article_id = $id;
+            $komentar->article_id = $request->get('id');
             $komentar->name = $request->get('name');
             $komentar->body = $request->get('body');
             $komentar->parent_id = $request->get('parent_id');
             $komentar->level = $request->get('level') + 1;
-            $komentar->save();
-            Session::flash('flash_message','Uspjesno ste objavili komentar');
+           // $komentar->save();
+
+            if($komentar->save()) {
+
+                $komentar = Comment::find($komentar->id);//Response::json(array('success' => true, 'last_insert_id' => $komentar->id), 200));
+                //dd($komentar);
+                $clanak = $komentar->article_id;
+
+                //===========================generisanje antibota========================
+                //anti bot
+                $broj1 = mt_rand(1,5);
+                $broj2 = mt_rand(1,5);
+                $sabirak1 = '';
+                $sabirak2 = '';
+                switch ($broj1) {
+                    case 1:
+                        $sabirak1 = 'jedan';
+                        break;
+                    case 2:
+                        $sabirak1 = 'dva';
+                        break;
+                    case 3:
+                        $sabirak1 = 'tri';
+                        break;
+                    case 4:
+                        $sabirak1 = 'cetiri';
+                        break;
+                    case 5:
+                        $sabirak1 = 'pet';
+                }
+                switch ($broj2) {
+                    case 1:
+                        $sabirak2 = 'jedan';
+                        break;
+                    case 2:
+                        $sabirak2 = 'dva';
+                        break;
+                    case 3:
+                        $sabirak2 = 'tri';
+                        break;
+                    case 4:
+                        $sabirak2 = 'cetiri';
+                        break;
+                    case 5:
+                        $sabirak2 = 'pet';
+                }
+
+                $rezultat = $broj1 + $broj2;
+                //===========================generisanje antibota========================
+
+                return view('clanak.prokomentarisi', compact('komentar','clanak','sabirak1','sabirak2','rezultat'));
+            }
+            else
+            {
+                Session::flash('flash_message','Neuspjesno objavljivanje komentara');
+            }
         }
         else
         {
-            Session::flash('flash_message','Pogresan odgovor na anti bot pitanje ');
+            //Session::flash('flash_message','Pogresan odgovor na anti bot pitanje ');
         }
 
         return redirect('komentar/'.$id);
+
 
 
     }
