@@ -210,4 +210,18 @@ class KontrolerKomentara extends Controller
 
         return view('clanak.minus', compact('minus'));
     }
+
+    public function destroy(Request $request){
+        $id = $request->get('id');
+        Comment::destroy($id);
+        // return Redirect::back();
+    }
+
+    public function prijavi(Request $request){
+        $id = $request->get('id');
+        $komentar = Comment::find($id);
+
+        $flag = $komentar->flag + 1;
+        DB::update('update comments set flag = ? where id = ?', [ $flag, $id]);
+    }
 }

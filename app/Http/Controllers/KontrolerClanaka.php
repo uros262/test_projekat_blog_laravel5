@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Http\Requests\ClanakRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Request;
 
+use Illuminate\Http\Request;
 use App\Article;
 use App\Http\Requests;
+
 use App\Http\Controllers\Controller;
 //use DB;
 use Carbon\Carbon;
@@ -44,7 +46,7 @@ class KontrolerClanaka extends Controller
      */
     public function store(ClanakRequest $request){
 
-        $input = ['title'=>Request::get('title'),'body'=>Request::get('body'),'published_at'=>Request::get('published_at'),'user_id'=>Auth::id()];
+        $input = ['title'=>$request->get('title'),'body'=>$request->get('body'),'published_at'=>$request->get('published_at'),'user_id'=>Auth::id()];
         Article::create($input);
         Session::flash('flash_message','Uspjesno ste kreirali clanak');
         return redirect('clanak');
@@ -65,4 +67,10 @@ class KontrolerClanaka extends Controller
         Session::flash('flash_message','Uspjesno ste izmjenili clanak');
         return redirect('clanak');
     }
+    public function destroy(Request $request){
+        $id = $request->get('id');
+        Article::destroy($id);
+       // return Redirect::back();
+    }
+
 }

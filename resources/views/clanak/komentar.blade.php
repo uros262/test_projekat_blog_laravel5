@@ -19,9 +19,9 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('body','Komentar: ') !!}
+        {!! Form::label('tekst','Komentar: ') !!}
         <span style="float: right;">0/1500</span>
-        {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+        {!! Form::textarea('tekst', null, ['class' => 'form-control']) !!}
         {!! Form::hidden('parent_id','0') !!}
         {!! Form::hidden('level','-1') !!}
     </div>

@@ -21,6 +21,7 @@ class CreateCommentsTable extends Migration
             $table->integer('plus')->unsigned()->default('0');
             $table->integer('minus')->unsigned()->default('0');
             $table->integer('level')->unsigned()->default('0');
+            $table->integer('flag')->unsigned()->default('0');
             $table->timestamps();
 
             $table->foreign('article_id')

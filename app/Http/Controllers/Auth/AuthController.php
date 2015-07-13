@@ -22,7 +22,7 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers;
 
-    protected $redirectPath = '/clanak';
+    protected $redirectPath = '/admin';
     /**
      * Create a new authentication controller instance.
      *

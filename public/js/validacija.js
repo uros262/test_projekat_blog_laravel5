@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $("textarea[name=body]").keyup(function(){
+    $("textarea[name=tekst]").keyup(function(){
         var tekst = $(this).val();
         var broj = tekst.length;
         $(this).prev().text(broj+'/1500');

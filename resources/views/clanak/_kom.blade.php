@@ -1,4 +1,4 @@
-{!! Form::open(['url' => ['komentar', $clanak_id],'class'=>'kom','style' => 'display: none; max-width: 600px; margin: 50px 0px; border: 1px solid darkgrey; padding: 20px; border-radius: 20px']) !!}
+{!! Form::open(['url' => ['komentar', $clanak_id],'class'=>'kom', 'id'=> 'acc'.$id,'style' => 'display: none; max-width: 600px; margin: 50px 0px; border: 1px solid darkgrey; padding: 20px; border-radius: 20px']) !!}
 <h2>Ostavite komentar:</h2>
 <div class="form-group">
     {!! Form::label('name','Ime: ') !!}
@@ -6,9 +6,9 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('body','Komentar: ') !!}
+    {!! Form::label('tekst','Komentar: ') !!}
     <span style="float: right;">0/1500</span>
-    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('tekst', null, ['class' => 'form-control']) !!}
     {!! Form::hidden('parent_id',$komentar->id) !!}
     {!! Form::hidden('level',$komentar->level) !!}
 </div>

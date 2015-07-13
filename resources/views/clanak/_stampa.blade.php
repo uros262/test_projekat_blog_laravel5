@@ -20,8 +20,9 @@ $a = stampa($komentari,$a);
 
 @foreach($a as $komentar)
     <?php $poravnaj = $komentar->level * 50;?>
-    <div id="kom_{{$komentar->id}}" style="margin-left: {{ $poravnaj }}px;background-color: gainsboro;border:1px solid darkgrey; margin-bottom: 10px;max-width: 600px; padding: 0px 10px 10px;">
-        <h2>{{$komentar->name}}</h2>
+    <div id="kom_{{$komentar->id}}" style="margin-left: {{ $poravnaj }}px;background-color: gainsboro;border:1px solid darkgrey; margin-bottom: 10px;max-width: 600px; padding: 10px;">
+        <h2 style="display: inline;">{{$komentar->name}}</h2>
+        <button class="prijavi" style="float: right;" onclick="flag('{{$komentar->id}}', '{{ csrf_token() }}'); $(this).attr('disabled','disabled');">Prijavi</button>
         <p class="vrijeme">{{$komentar->created_at}}</p>
         <p class="sadrzaj">{{$komentar->body}}</p>
         <hr/>
@@ -43,7 +44,7 @@ $a = stampa($komentari,$a);
         {!! Form::submit('Minus') !!}
         {!! Form::close() !!}
 
-        <button class="odg" style="margin-left: 200px;">Odgovori</button>
-        @include('clanak._kom',['clanak_id' => $clanak->id])
+        <button class="odg" onclick="acc('{{$komentar->id}}')" style="margin-left: 200px;">Odgovori</button>
+        @include('clanak._kom',['clanak_id' => $clanak->id, 'id' => $komentar->id])
     </div>
 @endforeach

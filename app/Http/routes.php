@@ -23,6 +23,7 @@ Route::get('kontakt', 'KontrolerStrana@kontakt');
 Route::resource('clanak', 'KontrolerClanaka');
 
 Route::get('komentar/{id}', 'KontrolerKomentara@show');
+Route::delete('komentar/{id}', 'KontrolerKomentara@destroy');
 Route::post('komentar', 'KontrolerKomentara@store');
 
 
@@ -30,6 +31,7 @@ Route::post('plus', 'KontrolerKomentara@plus');
 //Route::get('plus', 'KontrolerKomentara@plus');
 Route::post('minus', 'KontrolerKomentara@minus');
 //Route::get('minus', 'KontrolerKomentara@minus');
+Route::post('prijavi', 'KontrolerKomentara@prijavi');
 
 //Route::controllers([
 //    'auth' => 'Auth\AuthController',
@@ -41,9 +43,17 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
+//admin
+Route::get('admin', 'UserController@index');
+Route::get('admin/prijavljeni', 'UserController@prijavljeni');
+Route::post('admin/create', 'UserController@store');
+Route::delete('admin/delete', 'UserController@destroy');
+Route::get('admin/{id}', 'UserController@show');
+
+
 // Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+//Route::get('auth/register', 'Auth\AuthController@getRegister');
+//Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // Password reset link request routes...
 Route::get('password/email', 'Auth\PasswordController@getEmail');

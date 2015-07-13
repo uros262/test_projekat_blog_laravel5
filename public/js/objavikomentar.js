@@ -7,7 +7,7 @@ $(document).ready(function() {
         var token = $(this).parent().prev().prev().prev().prev().prev().val();
 
         var name = $(this).parent().prev().prev().prev().children('input[name=name]').val();
-        var body = $(this).parent().prev().prev().children('textarea[name=body]').val();
+        var body = $(this).parent().prev().prev().children('textarea[name=tekst]').val();
         var parent_id = $(this).parent().prev().prev().children('input[name=parent_id]').val();
         var level = $(this).parent().prev().prev().children('input[name=level]').val();
         var anti = $(this).parent().prev().children('select[name=anti]').val();

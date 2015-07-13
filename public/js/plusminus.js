@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $('input[value=Plus], input[value=Minus]').removeAttr('disabled');
+    $('input[value=Plus], input[value=Minus], .prijavi').removeAttr('disabled');
 
     $('input[value=Plus]').on('click',function(event){
         $(this).attr('disabled','disabled');
@@ -60,3 +60,24 @@ $(document).ready(function() {
             });
     });
 });
+
+function flag(id, token){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax(
+        {
+            url: '/prijavi',
+            type: 'POST',
+            data: "id=" + id + "&_token=" + token,
+            success: function (data) {
+                alert('Uspjesno ste prijavili komentar.');
+            },
+            error: function (data) {
+                alert('Greska');
+            }
+        });
+}
